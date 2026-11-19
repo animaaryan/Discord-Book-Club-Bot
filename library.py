@@ -1,10 +1,16 @@
 # Import pandas library
+import csv
+
 import pandas as pd
+
+# Import random module
+import random as rand
 
 # File path
 FILE_PATH = "data.csv"
 
 
+# Create a class named Library
 class Library:
     def __init__(self):
         self.data = {
@@ -13,6 +19,7 @@ class Library:
             'Author 03': {"Book Name": "Macbeth", "Release Date": 1992, "Pages": 200}
         }
 
+    # Sort by release date or page count
     def sort_dictionary(self, user_prompt):
 
         if user_prompt == 1:
@@ -42,3 +49,18 @@ class Library:
 
         # Print if done
         return f'CSV file "{FILE_PATH}" has been created successfully.'
+
+    def choose_book(self):
+
+        book_name = [name["Book Name"] for name in self.data.values()]
+        print(rand.choice(book_name))
+
+    def add_to_library(self, book_name: str, author_name: str, year: int, pages: int):
+        updated_dictionary = {"Book Name": book_name, "Release Date": year, "Pages": pages}
+        self.data[author_name] = updated_dictionary
+
+        author_row = {"Author": author_name, **updated_dictionary}
+        with open('data.csv', 'a', newline='') as file:
+            writer = csv.DictWriter(file, fieldnames=["Author", "Book Name", "Release Date", "Pages"])
+            writer.writerow(author_row)
+        return self.data
