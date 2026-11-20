@@ -56,11 +56,37 @@ class Library:
         print(rand.choice(book_name))
 
     def add_to_library(self, book_name: str, author_name: str, year: int, pages: int):
+
+        # Store a dictionary
         updated_dictionary = {"Book Name": book_name, "Release Date": year, "Pages": pages}
+
+        # Let's keep fieldnames separate
+        fieldnames = ["Author", "Book Name", "Release Date", "Pages"]
+
+        # Assign the author name to updated dictionary
         self.data[author_name] = updated_dictionary
 
+        # From the **kwargs lesson, we'll throw in the argument
         author_row = {"Author": author_name, **updated_dictionary}
+
+        # Open the csv file and add a row
         with open('data.csv', 'a', newline='') as file:
-            writer = csv.DictWriter(file, fieldnames=["Author", "Book Name", "Release Date", "Pages"])
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
             writer.writerow(author_row)
+        return self.data
+
+    def remove_from_library(self, book_name: str):
+
+        # Store the found book in a list
+        found_book = [name for name in self.data.items() if book_name == name[1]['Book Name']]
+
+        # If we do not find a book
+        if not found_book:
+            print(f"'{book_name}' not found.")
+            return self.data
+
+        # Remove the book at index
+        for name in found_book:
+            del self.data[name[0]]
+
         return self.data
