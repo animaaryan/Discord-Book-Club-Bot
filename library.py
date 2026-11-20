@@ -51,9 +51,8 @@ class Library:
         return f'CSV file "{FILE_PATH}" has been created successfully.'
 
     def choose_book(self):
-
         book_name = [name["Book Name"] for name in self.data.values()]
-        print(rand.choice(book_name))
+        print(f"Book for the month is: {rand.choice(book_name)}")
 
     def add_to_library(self, book_name: str, author_name: str, year: int, pages: int):
 
@@ -66,12 +65,13 @@ class Library:
         # Assign the author name to updated dictionary
         self.data[author_name] = updated_dictionary
 
-        # From the **kwargs lesson, we'll throw in the argument
+        # **kwargs, we'll throw in the argument
         author_row = {"Author": author_name, **updated_dictionary}
 
         # Open the csv file and add a row
         with open('data.csv', 'a', newline='') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
+            print(f"Added '{updated_dictionary["Book Name"]}' to the library")
             writer.writerow(author_row)
         return self.data
 
@@ -87,6 +87,7 @@ class Library:
 
         # Remove the book at index
         for name in found_book:
+            print(f"Removing {book_name}")
             del self.data[name[0]]
 
         return self.data
