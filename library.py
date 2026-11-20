@@ -1,6 +1,5 @@
 # Import pandas library
 import csv
-
 import pandas as pd
 
 # Import random module
@@ -23,22 +22,20 @@ class Library:
     def sort_dictionary(self, user_prompt):
 
         if user_prompt == 1:
-            print("Sorting by Release Date...")
-            by_years = dict(sorted(self.data.items(),
-                                   key=lambda x: x[1]["Release Date"]))
-            for year in by_years.items():
-                print(year)
-
+            print("Sorting by Release Date...\n")
+            sorted_books = sorted(self.data.items(),
+                                  key=lambda x: x[1]["Release Date"])
         elif user_prompt == 2:
-            print("Sorting by Page Count...")
-            by_pages = dict(sorted(self.data.items(),
-                                   key=lambda x: x[1]["Pages"], reverse=True))
-
-            for page in by_pages.items():
-                print(page)
-
+            print("Sorting by Page Count...\n")
+            sorted_books = sorted(self.data.items(),
+                                  key=lambda x: x[1]["Pages"], reverse=True)
         else:
-            raise "Incorrect Number Entered"
+            raise ValueError("Incorrect Number Entered")
+
+        print(f"{'Author':<18}{'Book Name':<22}{'Year':<6}{'Pages':>5}")
+        print('_' * 52)
+        for author, name in sorted_books:
+            print(f"{author:<18}{name['Book Name']:<22}{name['Release Date']:<6}{name['Pages']:>5}")
 
     def create_csv(self) -> str:
         # Create DataFrame
@@ -52,7 +49,7 @@ class Library:
 
     def choose_book(self):
         book_name = [name["Book Name"] for name in self.data.values()]
-        print(f"Book for the month is: {rand.choice(book_name)}")
+        return f"Book for the month is: {rand.choice(book_name)}"
 
     def add_to_library(self, book_name: str, author_name: str, year: int, pages: int):
 
