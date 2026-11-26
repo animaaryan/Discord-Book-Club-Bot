@@ -1,0 +1,85 @@
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    background-color: #FFE4F3;
+    font-family: sans-serif;
+    display: table-cell;
+    vertical-align: middle
+}
+
+h1 {
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: white;
+}
+
+h2 {
+    font-size: 18px;
+    color: white;
+}
+
+h1, h2, p {
+    text-align: center;
+}
+
+.to-add {
+    color: white;
+}
+
+form {
+    text-align: center;
+}
+
+.book-club {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background-color: #B4656F;
+    max-width: 550px;
+    border-radius: 5px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: auto 180px;
+    gap: 12px 8px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.form-grid label {
+    text-align: right;
+}
+
+hr {
+    height: 2px;
+    background-color: #EEE3AB;
+    border-color: #EEE3AB;
+}
+
+button {
+    background-color: #E59500;
+    border-color: #E59500;
+    color: white;
+    border-radius: 5px;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #E59500;
+    color: white;
+    text-align: center;
+}

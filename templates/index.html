@@ -1,40 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Book Club Night</title>
-
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Book Club</title>
+    <link href="/static/css/styles.css" rel="stylesheet"/>
 </head>
 <body>
-<h1> Book Club Picker</h1>
-
 <main>
-    <section>
-        <h3> Press the randomize button and let it pick something for you!</h3>
-        <div class="select_button" id="_button">
-            <form action="/random/" method="post">
-                <label for="myinput">{{book if book else "Select something"}}</label>
-                <br>
-                <button name="selectBtn" id="myinput" type="submit">Randomize</button>
+    <div class="book-club">
+        <h1> Book Club Picker</h1>
+        <hr>
+        <section>
+            <h2> Press the randomize button and let it pick something for you!</h2>
+            <div class="select_button" id="_button"></div>
+        </section>
+        <section>
+            <p class="to-add"><b> Want to add a book? </b></p>
+            <form action="/add/" method="post">
+                <div class="form-grid">
+                    <label for="name"> Book name: </label>
+                    <input type="text" id="name" name="name" required></label>
+
+                    <label for="author"> Author name:</label>
+                    <input type="text" name="author" id="author" required></label>
+
+                    <label for="year"> Year:</label>
+                    <input type="number" name="year" id="year"></label>
+
+                    <label for="pages"> Page Count:</label>
+                    <input type="number" name="pages" id="pages"></label>
+                </div>
+                <div class="button-row">
+                    <button type="submit" id="submit-btn">Add a book</button>
+                    <button type="submit" form="random-form" name="selectBtn" id="randomize-btn">Randomize</button>
+                </div>
             </form>
-        </div>
-    </section>
-    <hr>
-    <section>
-        <p><b> Want to add a book? </b></p>
-        <form action="/add/" method="post">
-            <label>Book name: <input type="text" name="name" required></label>
-            <br><br>
-            <label>Author name: <input type="text" name="author" required></label>
-            <br><br>
-            <label>Year: <input type="text" name="year" required></label>
-            <br><br>
-            <label>Page Count: <input type="text" name="pages" required></label>
-            <br><br>
-            <button type="submit">Add a book</button>
-        </form>
-    </section>
-    <hr>
+        </section>
+        <section>
+            <form id="random-form" action="/random/" method="post">
+                <br>
+                <label for="myinput" style="color: white;">{{book if book else "Book shows up here"}}</label>
+                <br>
+            </form>
+            </form>
+        </section>
+        <hr>
+    </div>
 </main>
 <footer>
     <p>All rights reserved &#xA9; 2026 Silly Devious Media </p>
