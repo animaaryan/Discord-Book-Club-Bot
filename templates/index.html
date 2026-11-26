@@ -12,10 +12,6 @@
         <h1> Book Club Picker</h1>
         <hr>
         <section>
-            <h2> Press the randomize button and let it pick something for you!</h2>
-            <div class="select_button" id="_button"></div>
-        </section>
-        <section>
             <p class="to-add"><b> Want to add a book? </b></p>
             <form action="/add/" method="post">
                 <div class="form-grid">
@@ -40,9 +36,12 @@
         <section>
             <form id="random-form" action="/random/" method="post">
                 <br>
-                <label for="myinput" style="color: white;">{{book if book else "Book shows up here"}}</label>
+                <section>
+                    <h2> Press the randomize button and let it pick something for you!</h2>
+                    <div class="select_button" id="_button"></div>
+                </section>
+                <label for="_button" style="color: white;">{{book if book else "Book shows up here"}}</label>
                 <br>
-            </form>
             </form>
         </section>
         <hr>
