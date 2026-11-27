@@ -44,7 +44,7 @@ form {
     padding: 20px;
     background-color: #B4656F;
     max-width: 550px;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .form-grid {
@@ -55,6 +55,14 @@ form {
     justify-content: center;
     align-items: center;
     margin-bottom: 16px;
+}
+
+.to-add::before {
+    content: "📖 ";
+}
+
+.to-add::after {
+    content: " 📖"
 }
 
 .form-grid label {
@@ -71,7 +79,18 @@ button {
     background-color: #E59500;
     border-color: #E59500;
     color: white;
-    border-radius: 5px;
+}
+
+#submit-btn:hover {
+    background-color: #efc059;
+    transform: scale(1.05);
+    transition: transform 0.3s, background-color 0.3s ease;
+}
+
+#randomize-btn:hover {
+    background-color: #efc059;
+    transform: scale(1.05);
+    transition: transform 0.3s, background-color 0.3s ease;
 }
 
 footer {
